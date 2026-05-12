@@ -97,7 +97,7 @@
 
         .hero-layout {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 60px;
             width: 100%;
@@ -114,7 +114,8 @@
         }
 
         .hero-media-box {
-            position: relative;
+            position: sticky;
+            top: 120px;
             border-radius: 20px;
             overflow: hidden;
             width: 500px;
@@ -681,7 +682,61 @@
             padding-top: 24px;
         }
 
+        /* === TESTIMONIALS === */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            border: 1px solid rgba(0,132,255,0.12);
+            border-radius: 16px;
+            padding: 32px 28px 28px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,132,255,0.12);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 4rem;
+            line-height: 1;
+            color: rgba(0,132,255,0.18);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            margin: 0;
+            padding-top: 28px;
+            font-size: 0.97rem;
+            line-height: 1.65;
+            color: #333;
+        }
+
         /* === RESPONSIVE === */
+        @media (max-width: 1280px) {
+            .hero-media-box { width: 420px; min-width: 420px; margin-right: 40px; }
+            .hero { padding-left: 40px; padding-right: 40px; }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-layout { flex-direction: column; gap: 32px; }
+            .hero-inner { padding-left: 0; }
+            .hero-media-box { position: relative; top: auto; width: 100% !important; min-width: unset !important; aspect-ratio: 16/9; margin-right: 0 !important; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
             nav { padding: 16px 24px; }
             section { padding: 72px 24px; }
@@ -691,6 +746,7 @@
             .hero-media-box { width: 100% !important; min-width: unset !important; aspect-ratio: 16/9; margin-right: 0 !important; }
             .about-inner { grid-template-columns: 1fr; gap: 40px; }
             .program-item { grid-template-columns: 1fr; gap: 8px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
             footer { padding: 48px 24px; }
             .footer-top { flex-direction: column; gap: 24px; }
         }
@@ -835,6 +891,38 @@
     </div>
 </section>
 
+<!-- FOR WHO -->
+<section class="light">
+    <div class="inner">
+        <div class="section-label">Voor wie</div>
+        <h2 class="section-title" style="color: var(--black);">Dit is voor jou als je...</h2>
+        <p class="section-desc">
+            Je hoeft geen technische achtergrond te hebben. Alleen nieuwsgierigheid
+            en de wil om te zien wat AI nu al voor jouw bureau kan betekenen.
+        </p>
+
+        <div class="who-grid">
+            <div class="who-card">
+                <div class="who-icon">🏛️</div>
+                <div class="who-text">Architect of ontwerper bent en wilt weten hoe AI jouw werkproces versnelt</div>
+            </div>
+            <div class="who-card">
+                <div class="who-icon">🏢</div>
+                <div class="who-text">Werkzaam bent bij een architectenbureau en AI wilt verkennen zonder technische kennis</div>
+            </div>
+            <div class="who-card">
+                <div class="who-icon">📄</div>
+                <div class="who-text">Tijd kwijt bent aan offertes, rapportages en bestemmingsplanteksten die AI kan overnemen</div>
+            </div>
+            <div class="who-card">
+                <div class="who-icon">💡</div>
+                <div class="who-text">Niet wilt achterblijven terwijl andere bureaus al volop experimenteren met AI</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <!-- PROGRAM -->
 <section id="programma">
     <div class="inner">
@@ -909,35 +997,32 @@
     </div>
 </section>
 
-<!-- FOR WHO -->
+<!-- TESTIMONIALS -->
 <section class="light">
     <div class="inner">
-        <div class="section-label">Voor wie</div>
-        <h2 class="section-title" style="color: var(--black);">Dit is voor jou als je...</h2>
-        <p class="section-desc">
-            Je hoeft geen technische achtergrond te hebben. Alleen nieuwsgierigheid
-            en de wil om te zien wat AI nu al voor jouw bureau kan betekenen.
-        </p>
+        <div class="section-label">Wat deelnemers zeggen</div>
+        <h2 class="section-title" style="color: var(--black);">Ervaringen van<br>eerdere deelnemers.</h2>
 
-        <div class="who-grid">
-            <div class="who-card">
-                <div class="who-icon">🏛️</div>
-                <div class="who-text">Architect of ontwerper bent en wilt weten hoe AI jouw werkproces versnelt</div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Het was top jongens! Goed gedaan. Jullie hebben ons aan het werk gezet.</p>
             </div>
-            <div class="who-card">
-                <div class="who-icon">🏢</div>
-                <div class="who-text">Werkzaam bent bij een architectenbureau en AI wilt verkennen zonder technische kennis</div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Interactief, energiek en leerzaam. De AI-proeverij gaf ons niet alleen kennis, maar ook zin om er zelf mee aan de slag te gaan.</p>
             </div>
-            <div class="who-card">
-                <div class="who-icon">📄</div>
-                <div class="who-text">Tijd kwijt bent aan offertes, rapportages en bestemmingsplanteksten die AI kan overnemen</div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Bedankt voor de toegankelijke, maar ook zeker praktische kennis. Wij kunnen verder met de volgende stap!</p>
             </div>
-            <div class="who-card">
-                <div class="who-icon">💡</div>
-                <div class="who-text">Niet wilt achterblijven terwijl andere bureaus al volop experimenteren met AI</div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">De studiedag was mede dankzij jullie, heel geslaagd! Dank Luca en Gianluca voor jullie inspirerende verhaal.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Compact, helder en precies wat we nodig hadden. We kunnen meteen doorpakken.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">De AI-proeverij van Leonardo Consultancy was een geweldige kennismaking met AI. Duidelijk, toegankelijk en stap voor stap uitgelegd. Wij hebben er veel van geleerd en zijn gemotiveerd om verder te gaan!</p>
             </div>
         </div>
-
     </div>
 </section>
 
