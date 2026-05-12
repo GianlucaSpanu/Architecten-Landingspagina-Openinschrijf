@@ -1084,6 +1084,9 @@
         </p>
 
         <form id="signup-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display:none;" aria-hidden="true">
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
                     <label class="form-label">Voornaam *</label>
@@ -1210,6 +1213,10 @@
         const form = e.target;
         const feedback = document.getElementById('form-feedback');
         const btn = form.querySelector('button[type="submit"]');
+
+        if (form.website && form.website.value) return;
+
+        if (!form.voornaam.value.trim() || !form.achternaam.value.trim() || !form.email.value.trim()) return;
 
         const datums = Array.from(form.querySelectorAll('input[name="datum"]:checked')).map(cb => cb.value);
 
