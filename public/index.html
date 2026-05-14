@@ -1299,6 +1299,7 @@
         if (!form.voornaam.value.trim() || !form.achternaam.value.trim() || !form.email.value.trim()) return;
 
         const datums = Array.from(form.querySelectorAll('input[name="datum"]:checked')).map(cb => cb.value);
+        if (datums.length === 0) return;
 
         const data = {
             voornaam:  form.voornaam.value,
