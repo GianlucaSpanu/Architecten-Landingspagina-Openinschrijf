@@ -1201,13 +1201,8 @@
                 <input type="text" name="bedrijf" class="form-input" placeholder="Naam van je bedrijf">
             </div>
             <div class="form-group">
-                <label class="form-label">Welke datum(s) schikken jou? *</label>
-                <div class="date-options">
-                    <label class="date-option">
-                        <input type="checkbox" name="datum" value="24 juni 2026 09:00-11:00">
-                        <span>Woensdag 24 juni 2026 · 09:00–11:00</span>
-                    </label>
-                </div>
+                <label class="form-label">Datum</label>
+                <p class="date-note">Volgende datum volgt na de bouwvak</p>
             </div>
 
             <div class="form-group">
@@ -1240,6 +1235,14 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+    .date-note {
+        margin: 0;
+        padding: 13px 16px;
+        border: 1px solid rgba(9,254,233,0.2);
+        border-radius: var(--radius-md);
+        font-size: 0.95rem;
+        color: var(--white);
     }
     .date-option {
         display: flex;
@@ -1301,16 +1304,13 @@
 
         if (!form.voornaam.value.trim() || !form.achternaam.value.trim() || !form.email.value.trim()) return;
 
-        const datums = Array.from(form.querySelectorAll('input[name="datum"]:checked')).map(cb => cb.value);
-        if (datums.length === 0) return;
-
         const data = {
             voornaam:  form.voornaam.value,
             achternaam: form.achternaam.value,
             email:     form.email.value,
             telefoon:  form.telefoon.value,
             bedrijf:   form.bedrijf.value,
-            datum:     datums,
+            datum:     'Volgende datum volgt na de bouwvak',
             opmerking: form.opmerking.value
         };
 
